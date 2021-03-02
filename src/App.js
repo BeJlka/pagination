@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { TablePage } from './Page/TablePage';
+import { Search } from './components/Search';
+import 'materialize-css';
 
 function App() {
+
+  const [search, setSearch] = useState(null);
+
+  const changeHandler = (text) => {
+    // console.log(text);
+    setSearch(text ? text : null);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Search changeHandler={changeHandler} />
+      <TablePage search={search} />
     </div>
   );
 }
